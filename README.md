@@ -3,27 +3,27 @@ Write a function member, which takes a comparision function c, a term t and a li
 
 To remind for the sample runs below: the built-in compare function gives compare t e = 0 if t and e are equal.
 
-# member compare 3 [1; 2; 3];;
+- : member compare 3 [1; 2; 3];;
    - : bool = true
-# member compare 4 [1; 2; 3];;
+- : member compare 4 [1; 2; 3];;
    - : bool = false
-# member compare 'a' ['a'; 'b'; 'c'];;
+- : member compare 'a' ['a'; 'b'; 'c'];;
    - : bool = true
 
 If a comparison function equal_second_components is defined as let equal_second_components (_, x) (_, y) = compare x y then your function should behave, e.g., as follows:
 
- # member equal_second_components ('a',5) [(1,2); (3,4); (5,6)];;
+- : member equal_second_components ('a',5) [(1,2); (3,4); (5,6)];;
    - : bool = false
-# member equal_second_components ('a',6) [(1,2); (3,4); (5,6)];;
+- : member equal_second_components ('a',6) [(1,2); (3,4); (5,6)];;
    - : bool = true
-# member equal_second_components (42, 6) [(1,2); (3,4); (5,6)];;
+- : member equal_second_components (42, 6) [(1,2); (3,4); (5,6)];;
    - : bool = true
 
 If a comparision function evens_eq_evens_odds_eq_odds makes all even numbers equal to each other and all odd numbers equal to each other, e.g., by defining let evens_eq_evens_odds_eq_odds n1 n2 = compare (n1 mod 2) (n2 mod 2) then your function should behave, e.g., as follows:
 
-# member evens_eq_evens_odds_eq_odds 4 [1; 2; 3];;
+- : member evens_eq_evens_odds_eq_odds 4 [1; 2; 3];;
    - : bool = true
-# member evens_eq_evens_odds_eq_odds 4 [1; 3; 5];;
+- : member evens_eq_evens_odds_eq_odds 4 [1; 3; 5];;
    - : bool = false
 
 
@@ -31,13 +31,13 @@ Task 2
 
 Write a function count_occurrences, which takes a list list1 and returns a list list2 of pairs (e,n), where e is an element of list1 and n is the number of occurrences of e in list1. Make sure that list2 is given in a sorted form, in the descending order of the occurrences.
 
-# count_occurrences ['a'; 'b'; 'a'; 'c'; 'c'; 'a'; 'd'];;
+- : count_occurrences ['a'; 'b'; 'a'; 'c'; 'c'; 'a'; 'd'];;
    - : (char * int) list = [('a', 3); ('c', 2); ('b', 1); ('d', 1)]
 
-# count_occurrences [0; 0; 0; -2; 3; -1; -1; 3; 3; 0];;
+- : count_occurrences [0; 0; 0; -2; 3; -1; -1; 3; 3; 0];;
    - : (int * int) list = [(0, 4); (3, 3); (-1, 2); (-2, 1)]
 
-# count_occurrences 
+- : count_occurrences 
          [("str1", 1); ("str1",2); ("str2",1); ("str2",1); ("str1",2)];;
    - : ((string * int) * int) list =
          [(("str1", 2), 2); (("str2", 1), 2); (("str1", 1), 1)]
@@ -48,11 +48,11 @@ Task 3
 Write a function `drop_last : 'a list -> 'a list` which takes a list,
 drops its last element and gives beck the remaining part.
 
-# drop_last [1; 2; 3; 4];;
+- : drop_last [1; 2; 3; 4];;
     - : int list = [1; 2; 3]
-# drop_last [1];;
+- : drop_last [1];;
     - : int list = []
-# drop_last [];;
+- : drop_last [];;
     Exception: Failure "Empty list has no last element".
 
 
@@ -60,11 +60,11 @@ Task 4
 
 Modify drop_last so that it returns an optional value, instead of raising an exception for empty lists. Let this variant be called drop_last_opt. Then its type should be 'a list -> 'a list option and sample runs look as
 
-#  drop_last_opt [];;
+- : drop_last_opt [];;
     - : 'a list option = None
-#  drop_last_opt [1];;
+- : drop_last_opt [1];;
     - : int list option = Some []
-#  drop_last_opt [1;2;3];;
+- : drop_last_opt [1;2;3];;
     - : int list option = Some [1; 2]
 
 Task 5
@@ -73,15 +73,15 @@ Write a function zip_with that, given a binary function and two lists, construct
  `zip_with f [x1; ...; xm] [y1; ...; yn] = [f x1 y1; ...; f xk yk]`
 where k is the minimum between n and m.
 
-# zip_with (fun x y -> [x;y]) [1;2;3] [5;6];;
+- : zip_with (fun x y -> [x;y]) [1;2;3] [5;6];;
     - : int list list = [[1; 5]; [2; 6]]
-# zip_with (fun x y -> [x;y]) [1;2;3] [5;6;7;8];;
+- : zip_with (fun x y -> [x;y]) [1;2;3] [5;6;7;8];;
     - : int list list = [[1; 5]; [2; 6]; [3; 7]]
-# zip_with (fun x y -> (x,y)) [1;2;3] ['a';'b'];;
+- : zip_with (fun x y -> (x,y)) [1;2;3] ['a';'b'];;
     - : (int * int) list = [(1, 'a'); (2, 'b')]
-# zip_with (+) [1;2;3] [5;6];;
+- : zip_with (+) [1;2;3] [5;6];;
     - : int list = [6; 8]
-# zip_with (^) ["aa";"bb";"cc"] ["1";"2"];;
+- : zip_with (^) ["aa";"bb";"cc"] ["1";"2"];;
     - : string list = ["aa1"; "bb2"]
 
 
@@ -111,7 +111,7 @@ Your task is to write a function table_and_scorers, which takes the list of abov
 
 (a) The list of tuples for each team of the form (t, g, w, d, l, gf, ga, p), where t stands for a team, g for games played, w for wins, d for draws, l for losses, gf for goals for (scored goals), ga for goals against (conseded goals), p for points, which records the summary of all the games played by the team.
 
-Sort the list of such tuples
+- Sort the list of such tuples
   - first by points, 
   - in case of a tie by goal difference (`gf` - `ga`), 
   - in case of a tie by `goals_for`,
@@ -144,7 +144,7 @@ is given as
 
   Your function tableandscorers should behave, e.g., as follows:
     
-# table_and_scorers wc22_C;;
+- : table_and_scorers wc22_C;;
    - : (team * int * int * int * int * int * int * int) list *
        (string * team * int) list
    =
@@ -155,7 +155,7 @@ is given as
      ("Lewandowski", Pol, 1); ("Mac Allister", Arg, 1); ("Martin", Mex, 1);
      ("Zielinski", Pol, 1)])
 
-# table_and_scorers wc22_H;;
+- : table_and_scorers wc22_H;;
    - : (team * int * int * int * int * int * int * int) list *
        (string * team * int) list
    =
