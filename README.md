@@ -1,4 +1,5 @@
 Task 1
+
 Write a function member, which takes a comparision function c, a term t and a list l and returns true if l contains an element e such that e and t are equal with respect to c.
 
 To remind for the sample runs below: the built-in compare function gives compare t e = 0 if t and e are equal.
